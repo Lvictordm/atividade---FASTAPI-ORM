@@ -24,4 +24,5 @@ class Produtos(Base):
     estoque - Column(Integer, nullable=False)
     
     categoria_id = Column(Integer, ForeignKey("categorias.id"))
-    categoria = relationship("Categoria", back_populates="produtos")
+    categoria = relationship("Categoria", back_populates="produtos") 
+    
