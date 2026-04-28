@@ -1,0 +1,13 @@
+<h1>Categorias</h1>
+<div class="card">
+    <ul style="list-style: none; padding: 0;">
+        {% for cat in categorias %}
+        <li style="padding: 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between;">
+            <strong>{{ cat.nome }}</strong>
+            <span style="color: #8e44ad; font-size: 0.8rem;">{{ cat.produtos|length }} produtos</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/categorias/cadastro" class="btn-submit" style="text-decoration: none; display: block; text-align: center;">+ Nova Categoria</a>
+</div>

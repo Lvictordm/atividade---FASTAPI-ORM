@@ -1,0 +1,20 @@
+<h1>Cadastrar Categoria</h1>
+<p class="card-sub">Crie divisões para organizar seus produtos.</p>
+
+<form action="/categorias" method="post">
+    <div class="field">
+        <label for="nome">Nome da Categoria</label>
+        <input type="text" id="nome" name="nome" placeholder="Ex: Tecnologia" required>
+    </div>
+
+    <div class="field">
+        <label for="descricao">Descrição (Opcional)</label>
+        <textarea id="descricao" name="descricao" placeholder="Breve resumo da categoria..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Salvar Categoria →</button>
+</form>
+
+<div class="form-footer">
+    <a href="/listar_categorias">Ver categorias existentes</a>
+</div>

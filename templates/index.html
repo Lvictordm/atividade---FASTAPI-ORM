@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPlataforma — Dashboard de Gestão</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+   
+    :root {
+      --purple-deep: #3d0070;
+      --purple-core: #6a0dad;
+      --purple-mid: #8e44ad;
+      --purple-light: #b07cce;
+      --purple-pale: #f0e4ff;
+      --gold: #e8c86e;
+      --white: #ffffff;
+      --off-white: #faf7ff;
+      --text-dark: #1a0030;
+      --text-mid: #4a3060;
+      --text-light: #8a7099;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-core) 55%, var(--purple-mid) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Background grid + glow (Idêntico ao seu) */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* NAV STRIP */
+    .top-bar {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 18px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(61, 0, 112, 0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 50;
+    }
+
+    .top-bar-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .top-bar-logo span { color: var(--gold); }
+
+    /* HERO SECTION */
+    .hero-container {
+      text-align: center;
+      z-index: 1;
+      max-width: 900px;
+      margin-bottom: 50px;
+      animation: slideUp 0.8s ease-out;
+    }
+
+    .hero-container h1 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero-container h1 span { color: var(--gold); }
+
+    .hero-container p {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+
+    /* GRID DE CARDS */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      width: 100%;
+      max-width: 1000px;
+      z-index: 1;
+    }
+
+    .menu-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px;
+      text-align: left;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .menu-card:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-10px);
+      border-color: var(--gold);
+    }
+
+    .card-icon {
+      font-size: 2rem;
+      background: var(--purple-pale);
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 16px;
+      margin-bottom: 10px;
+    }
+
+    .menu-card h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1.5rem;
+    }
+
+    .menu-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .card-link {
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: auto;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar { padding: 18px 24px; }
+      .menu-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="/" class="top-bar-logo">Edu<span>Plataforma</span></a>
+  </div>
+
+  <div class="hero-container">
+    <h1>Gestão de <span>Cursos</span> & Estoque</h1>
+    <p>Bem-vindo ao centro administrativo. Selecione uma das áreas abaixo para gerenciar sua plataforma de estudos.</p>
+  </div>
+
+  <div class="menu-grid">
+    
+    <a href="/cursos/cadastros" class="menu-card">
+      <div class="card-icon">📚</div>
+      <h3>Gerenciar Cursos</h3>
+      <p>Adicione novos conteúdos, defina carga horária e organize sua grade curricular.</p>
+      <span class="card-link">Acessar Painel →</span>
+    </a>
+
+    <a href="/listar_produtos" class="menu-card">
+      <div class="card-icon">📦</div>
+      <h3>Controle de Estoque</h3>
+      <p>Visualize todos os itens cadastrados, verifique preços e quantidades em tempo real.</p>
+      <span class="card-link">Ver Estoque →</span>
+    </a>
+
+    <a href="/categorias/cadastro" class="menu-card">
+      <div class="card-icon">🏷️</div>
+      <h3>Categorias</h3>
+      <p> Organize seus produtos e cursos por nichos para facilitar a navegação do usuário.</p>
+      <span class="card-link">Configurar Categorias →</span>
+    </a>
+
+  </div>
+
+</body>
+</html>

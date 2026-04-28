@@ -1,0 +1,18 @@
+<h1>Produtos Disponíveis</h1>
+
+<div class="grid-produtos">
+    {% for produto in produtos %}
+    <div class="produto-card">
+        <span class="categoria-tag">{{ produto.categoria.nome if produto.categoria else 'Geral' }}</span>
+        
+        <div class="produto-nome">{{ produto.nome }}</div>
+        <div class="produto-preco">R$ {{ "%.2f"|format(produto.preco) }}</div>
+        
+        <p style="color: #8a7099; font-size: 0.85rem;">Em estoque: {{ produto.estoque }} un.</p>
+
+        <form action="/produtos/{{ produto.id }}/deletar" method="post" style="margin-top: 15px;">
+            <button type="submit" class="btn-delete" onclick="return confirm('Deseja excluir?')">Deletar</button>
+        </form>
+    </div>
+    {% endfor %}
+</div>
