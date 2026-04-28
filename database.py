@@ -8,15 +8,15 @@ load_dotenv()
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-emgine = create_engine("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
 
-sesson = sessionmaker(bind-engine)
+Session = sessionmaker(bind=engine)
 
 # Base para todos os models do banco
 Base = declarative_base()
 
 def get_db():
-    db = session()
+    db = Session()
     try:
         yield db
     finally:
